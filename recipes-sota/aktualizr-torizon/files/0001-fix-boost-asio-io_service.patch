@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Yocto Fix <fix@local>
+Date: Mon, 21 Apr 2025 00:00:00 +0000
+Subject: [PATCH] Replace removed boost::asio::io_service with io_context
+
+boost::asio::io_service was removed in Boost >= 1.74.
+Replace include and type usage with boost::asio::io_context.
+---
+ src/aktualizr_primary/secondary.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/aktualizr_primary/secondary.cc b/src/aktualizr_primary/secondary.cc
+index 0000000..0000001 100644
+--- a/src/aktualizr_primary/secondary.cc
++++ b/src/aktualizr_primary/secondary.cc
+@@ -1,5 +1,5 @@
+-#include <boost/asio/io_service.hpp>
++#include <boost/asio/io_context.hpp>
+ 
+@@ -165,7 +165,7 @@
+-  boost::asio::io_service io_context_;
++  boost::asio::io_context io_context_;
