@@ -1,22 +1,28 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: Yocto Fix <fix@local>
-Date: Mon, 21 Apr 2025 00:00:00 +0000
+From: Marco Nicoloso <m.nicoloso@sieltre.it>
+Date: Mon, 21 Apr 2026 00:00:00 +0000
 Subject: [PATCH] Replace removed boost::asio::io_service with io_context
 
 boost::asio::io_service was removed in Boost >= 1.74.
 Replace include and type usage with boost::asio::io_context.
----
- src/aktualizr_primary/secondary.cc | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/src/aktualizr_primary/secondary.cc b/src/aktualizr_primary/secondary.cc
-index 0000000..0000001 100644
+Upstream-Status: Inappropriate [specific to Toradex BSP build]
+Signed-off-by: Marco Nicoloso <m.nicoloso@sieltre.it>
 --- a/src/aktualizr_primary/secondary.cc
 +++ b/src/aktualizr_primary/secondary.cc
 @@ -1,5 +1,5 @@
+ #include <boost/asio/deadline_timer.hpp>
 -#include <boost/asio/io_service.hpp>
 +#include <boost/asio/io_context.hpp>
- 
+ #include <boost/asio/ip/tcp.hpp>
+ #include <boost/asio/placeholders.hpp>
+ #include <boost/bind/bind.hpp>
 @@ -165,7 +165,7 @@
+
+   Aktualizr& aktualizr_;
+
 -  boost::asio::io_service io_context_;
 +  boost::asio::io_context io_context_;
+   boost::asio::ip::tcp::endpoint endpoint_;
+   boost::asio::ip::tcp::acceptor acceptor_{io_context_, endpoint_};
+   boost::asio::ip::tcp::socket con_socket_{io_context_};
