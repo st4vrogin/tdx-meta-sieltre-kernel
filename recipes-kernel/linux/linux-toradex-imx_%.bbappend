@@ -17,6 +17,7 @@ KERNEL_FEATURES:remove = "bsp/${MACHINE}-${LINUX_KERNEL_TYPE}-torizon.scc"
 SRC_URI += "\
         file://${CUSTOM_DEVICETREE} \
         file://sieltre-audio.cfg \
+        file://walnascar-devs.cfg \
         "
 
 do_configure:append() {
